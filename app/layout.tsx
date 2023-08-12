@@ -32,7 +32,7 @@ export default async function RootLayout({
         <Alert />
         <Nav user={session?.user} expires={session?.expires as string} />
         <main>{children}</main>
-        {/* <Footer /> */}
+        <Footer />
       </Hydrate>
     </html>
   );
