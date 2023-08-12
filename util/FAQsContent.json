@@ -1,0 +1,60 @@
+{
+  "oneLi": [
+    {
+      "id": 1,
+      "title": "Are candles safe for babies to toddlers?",
+      "description": "Of course it's safe because it uses natural ingredients"
+    },
+    {
+      "id": 2,
+      "title": "After the smell runs out, will it pollute the environment?",
+      "description": "Of course it's safe because it uses natural ingredients"
+    },
+    {
+      "id": 3,
+      "title": "Are the materials used for the manufacture of chemicals?",
+      "description": "Of course it's safe because it uses natural ingredients"
+    },
+    {
+      "id": 4,
+      "title": "Can I resell wax products at a different price?",
+      "description": "Of course it's safe because it uses natural ingredients"
+    }
+  ],
+  "twoLi": [
+    {
+      "title": "",
+      "description": ""
+    },
+    {
+      "title": "",
+      "description": ""
+    },
+    {
+      "title": "",
+      "description": ""
+    },
+    {
+      "title": "",
+      "description": ""
+    }
+  ],
+  "threeLi": [
+    {
+      "title": "",
+      "description": ""
+    },
+    {
+      "title": "",
+      "description": ""
+    },
+    {
+      "title": "",
+      "description": ""
+    },
+    {
+      "title": "",
+      "description": ""
+    }
+  ]
+}

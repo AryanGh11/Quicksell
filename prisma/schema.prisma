@@ -60,6 +60,13 @@ model Banner {
   description String?
 }
 
+model Posts {
+  id          String  @id @default(cuid())
+  image       String?
+  title       String?
+  description String?
+}
+
 model Account {
   id                String  @id @default(cuid())
   userId            String

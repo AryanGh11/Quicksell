@@ -7,6 +7,7 @@ import Hydrate from "./components/Hydrate";
 import Nav from "./components/Nav";
 import { prisma } from "@/util/prisma";
 import Alert from "./components/Alert";
+import Footer from "./components/Footer";
 
 const zillaSlab = Zilla_Slab({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default async function RootLayout({
         <Alert />
         <Nav user={session?.user} expires={session?.expires as string} />
         {children}
+        <Footer />
       </Hydrate>
     </html>
   );

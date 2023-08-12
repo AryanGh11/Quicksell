@@ -5,22 +5,19 @@
 /* Hide scrollbar */
 @layer utilities {
   @variants responsive {
-
-    /* Hide scrollbar for Chrome, Safari and Opera */
+    /* Hide scrollbar for Chrome, Safari, and Opera */
     .no-scrollbar::-webkit-scrollbar {
       display: none;
     }
 
-    /* Hide scrollbar for IE, Edge and Firefox */
+
+    /* Hide scrollbar for IE, Edge, and Firefox */
     .no-scrollbar {
-      -ms-overflow-style: none;
-      /* IE and Edge */
-      scrollbar-width: none;
-      /* Firefox */
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
     }
   }
 }
-
 .btn {
   @apply px-8 py-3
 }
@@ -43,4 +40,17 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.example::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.example {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }

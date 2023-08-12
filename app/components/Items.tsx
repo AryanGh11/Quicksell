@@ -24,7 +24,7 @@ export default async function Items({
           {tag}
         </h1>
       )}
-      <Image src={image!} alt={name} width={500} height={500} />
+      <Image src={image!} alt={name} width={500} height={500} className="w-full"/>
       <div className="flex justify-between w-full">
         <div className="flex flex-col gap-1">
           <h1 className="font-semibold">{name}</h1>

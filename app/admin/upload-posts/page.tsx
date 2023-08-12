@@ -8,7 +8,7 @@ export default function UploadImage() {
   const [description, setShortDes] = useState("");
   const [image, setImage] = useState("");
   const isDisable = () => {
-    if (image === "" || title === "" || description === "") {
+    if (image === "" && title === "" && description === "") {
       return true;
     } else {
       return false;
@@ -58,7 +58,7 @@ export default function UploadImage() {
         </div>
         <Link
           href={{
-            pathname: "/admin/upload-banners/add-to-database",
+            pathname: "/admin/upload-posts/add-to-database",
             query: { title, description, image },
           }}
         >
@@ -66,7 +66,7 @@ export default function UploadImage() {
             disabled={isDisable()}
             className="btn bg-secondary text-neutral w-full"
           >
-            Add banner to Database
+            Add post to Database
           </button>
         </Link>
       </div>
