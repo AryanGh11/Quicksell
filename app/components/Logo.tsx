@@ -1,7 +1,7 @@
 export default function Logo() {
   return(
-    <div className="text-3xl">
-      <span className="font-bold">Ar</span>Ex
+    <div className="text-2xl">
+      <span className="font-bold">Quick</span>sell
     </div>
   )
 }

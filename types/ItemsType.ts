@@ -6,4 +6,5 @@ export type ItemsType = {
   finalPrice: number;
   image: string | null;
   tag: string | null;
+  category: string;
 };

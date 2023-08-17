@@ -84,3 +84,33 @@ export const useThemeStore = create<ThemeState>()(
     { name: "theme-store" }
   )
 );
+
+type FilterBar = {
+  filter: string;
+  setFilter: (val: string) => void;
+};
+
+export const useFilterBar = create<FilterBar>()(
+  persist(
+    (set) => ({
+      filter: "",
+      setFilter: (string) => set((state) => ({ filter: string })),
+    }),
+    { name: "filter-bar" }
+  )
+);
+
+type LoginStatus = {
+  isLogin: boolean;
+  toggleLogin: () => void;
+};
+
+export const useLoginStatus = create<LoginStatus>()(
+  persist(
+    (set) => ({
+      isLogin: false,
+      toggleLogin: () => set((state) => ({ isLogin: !state.isLogin })),
+    }),
+    { name: "login-status" }
+  )
+);

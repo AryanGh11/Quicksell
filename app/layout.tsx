@@ -1,13 +1,12 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Zilla_Slab } from "next/font/google";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import Hydrate from "./components/Hydrate";
 import Nav from "./components/Nav";
-import { prisma } from "@/util/prisma";
 import Alert from "./components/Alert";
 import Footer from "./components/Footer";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 const zillaSlab = Zilla_Slab({
   subsets: ["latin"],
@@ -31,7 +30,7 @@ export default async function RootLayout({
       <Hydrate>
         <Alert />
         <Nav user={session?.user} expires={session?.expires as string} />
-        <main>{children}</main>
+        {children}
         <Footer />
       </Hydrate>
     </html>

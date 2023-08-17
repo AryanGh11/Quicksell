@@ -9,6 +9,7 @@ export default function UploadImage() {
   const [regularPrice, setRegularPrice] = useState("");
   const [finalPrice, setFinalPrice] = useState("");
   const [image, setImage] = useState("");
+  const [category, setCategory] = useState("Women");
   const [isTag, setIsTag] = useState(false);
   const [tag, setTag] = useState("");
   const handleIsTag = () => {
@@ -100,6 +101,21 @@ export default function UploadImage() {
         </div>
         <div className="flex flex-col w-full gap-1">
           <label htmlFor="image" className="font-bold pl-2">
+            Category
+          </label>
+          <select
+            className="w-full border-solid border-2 border-secondary p-2 rounded-lg selection:bg-secondary selection:text-neutral"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option>Women</option>
+            <option>Home</option>
+            <option>Gaming</option>
+            <option>Work</option>
+          </select>
+        </div>
+        <div className="flex flex-col w-full gap-1">
+          <label htmlFor="image" className="font-bold pl-2">
             Is tag?
           </label>
           <input
@@ -112,11 +128,11 @@ export default function UploadImage() {
         </div>
         {isTag && (
           <select
-            className="w-1/2 border-solid border-2 border-secondary p-2 rounded-lg selection:bg-secondary selection:text-neutral"
+            className="w-full border-solid border-2 border-secondary p-2 rounded-lg selection:bg-secondary selection:text-neutral"
             value={tag}
             onChange={(e) => setTag(e.target.value)}
           >
-            <option>-5%</option>
+            <option defaultChecked>-5%</option>
             <option>-10%</option>
             <option>-15%</option>
             <option>NEW</option>
@@ -126,7 +142,15 @@ export default function UploadImage() {
       <Link
         href={{
           pathname: "/admin/upload-items/add-to-database",
-          query: { name, description, regularPrice, finalPrice, image, tag },
+          query: {
+            name,
+            description,
+            regularPrice,
+            finalPrice,
+            image,
+            tag,
+            category,
+          },
         }}
       >
         <button

@@ -1,3 +1,6 @@
+import Link from "next/link";
+import PrimaryButton from "./PrimaryButton";
+
 export default function Header() {
   return (
     <header className="flex flex-col justify-center items-center pt-10 pb-14 px-6 gap-8">
@@ -10,9 +13,9 @@ export default function Header() {
           <span className="text-peanut_butter_crust">candle</span>
         </h1>
       </div>
-      <button className="btn bg-secondary text-neutral rounded-full">
-        Discover Products
-      </button>
+      <Link href={"/products"}>
+        <PrimaryButton text={"Discover Products"} disable={false} />
+      </Link>
     </header>
   );
 }

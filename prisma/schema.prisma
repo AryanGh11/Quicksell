@@ -19,6 +19,14 @@ model User {
   Order            Order[]
 }
 
+model AdminUser {
+  id       String  @id @default(cuid())
+  name     String?
+  email    String  @unique
+  password String
+  username String  @unique
+}
+
 model Order {
   id              String    @id @default(cuid())
   user            User      @relation(fields: [userId], references: [id])
@@ -39,6 +47,7 @@ model Product {
   finalPrice   Float
   image        String?
   tag          String?
+  category     String
   quantity     Float   @default(0)
   orders       Order[]
 }
@@ -46,11 +55,6 @@ model Product {
 model Alert {
   id   String @id @default(cuid())
   text String @unique
-}
-
-model Images {
-  id  String @id @default(cuid())
-  url String
 }
 
 model Banner {
@@ -65,6 +69,11 @@ model Posts {
   image       String?
   title       String?
   description String?
+}
+
+model Category {
+  id       String @id @default(cuid())
+  category String @unique
 }
 
 model Account {
@@ -101,3 +110,5 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+//bayad npx prisma migrate dev run konam

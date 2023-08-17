@@ -11,9 +11,18 @@ type SearchParams = {
   image: string | null;
   tag: string | null;
   quantity: number | 0;
+  category: string;
 
   //banners
   title: string;
+
+  //alerts
+  text: string;
+
+  //signup and login
+  email: string;
+  password: string;
+  username: string
 };
 
 export type SearchParamTypes = {

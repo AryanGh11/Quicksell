@@ -122,7 +122,7 @@ export default function FAQs() {
             {/* threeLi content */}
             <motion.div
               className="flex flex-col gap-4"
-              key={FAQsContent.oneLi[0].id}
+              key={FAQsContent.oneLi[2].id}
             >
               <motion.div
                 initial={{ y: -20 }}
@@ -130,7 +130,7 @@ export default function FAQs() {
                 className="flex gap-4 justify-between w-full items-center"
               >
                 <h1 className="text-lg max-w-[80%]">
-                  {FAQsContent.oneLi[0].title}
+                  {FAQsContent.oneLi[2].title}
                 </h1>
                 {threeLiExpand && (
                   <div onClick={() => setThreeLiExpand(false)}>
