@@ -4,6 +4,7 @@ import Items from "./Items";
 import Posts from "./Posts";
 import FAGs from "./FAQs";
 import Link from "next/link";
+import PrimaryButton from "./PrimaryButton";
 
 export default async function Body() {
   const trendingItems = await prisma.product.findMany({ take: 5 });
@@ -12,15 +13,15 @@ export default async function Body() {
   return (
     <div className="flex flex-col gap-10 w-full">
       {/* Banners */}
-      <div className="grid grid-rows-1 grid-flow-col overflow-x-scroll overflow-y-hidden no-scrollbar aspect-video">
+      <div className="grid grid-rows-1 grid-flow-col overflow-x-scroll overflow-y-hidden no-scrollbar aspect-video md:mx-20 md:w-[calc(100vw-10rem) md:gap-10 md:aspect-auto">
         {banners.map((banner) => (
-          <div className="justify-center items-start flex-col w-screen bg-blue-400">
+          <div className="justify-center items-start max-h-[600px] flex-col w-[calc(100vw-10rem)] bg-blue-400">
             <Image
               src={banner.image}
               alt={banner.title}
               width={720}
               height={720}
-              className="w-full object-cover h-full"
+              className="w-full md:w-[calc(100% - 20rem)] object-cover h-full"
             />
             <div className="-mt-24 ml-8 z-10 w-fit">
               <h1 className="text-4xl text-neutral font-bold bg-secondary w-fit">
@@ -38,7 +39,7 @@ export default async function Body() {
         </h1>
       </div>
       {/* Trending items */}
-      <div className="flex flex-col px-6 gap-10">
+      <div className="flex flex-col px-6 gap-10 md:flex-row md:px-20 md:items-start md:justify-center">
         {trendingItems.map((trending) => (
           <Items
             tag={trending.tag}
@@ -53,15 +54,13 @@ export default async function Body() {
           />
         ))}
       </div>
-      <div className="w-full px-6">
+      <div className="w-full px-6 flex justify-center">
         <Link href={"/products"}>
-          <button className="btn text-neutral w-full bg-secondary rounded-full">
-            Show more
-          </button>
+          <PrimaryButton text="Show more" disable={false} />
         </Link>
       </div>
       {/* Posts */}
-      <div className="flex flex-col gap-6 px-6">
+      <div className="flex flex-col gap-6 px-6 md:grid md:grid-flow-col md:auto-cols-fr">
         {posts.map((post) => (
           <Posts
             id={post.id}

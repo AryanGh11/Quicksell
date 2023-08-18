@@ -5,8 +5,11 @@ import { IoMenuOutline } from "react-icons/io5";
 import { CgShoppingBag } from "react-icons/cg";
 import Logo from "@/app/components/Logo";
 import { signIn, signOut } from "next-auth/react";
+import { useCartStore } from "@/store";
+import Cart from "./Cart";
 
 export default function Nav({ user }: Session) {
+  const cartStore = useCartStore();
   return (
     <nav className="w-full py-3 px-6 flex justify-between items-center">
       {/* Menu icon */}
@@ -27,14 +30,19 @@ export default function Nav({ user }: Session) {
           )}
         </ul>
       </div>
-      {/* Menu icon */}
+      {/* Logo */}
       <div className="">
         <Logo />
       </div>
       {/* Cart icon */}
-      <div className="w-6 h-6 flex justify-center items-center">
+      <div
+        className="w-6 h-6 flex justify-center items-center cursor-pointer"
+        onClick={() => cartStore.toggleCart()}
+      >
         <CgShoppingBag className="w-full h-full" />
       </div>
+      {/* Cart */}
+      {cartStore.isOpen && <Cart />}
     </nav>
   );
 }
