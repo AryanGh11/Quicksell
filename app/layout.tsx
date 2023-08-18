@@ -15,8 +15,8 @@ const zillaSlab = Zilla_Slab({
 });
 
 export const metadata: Metadata = {
-  title: "Arex",
-  description: "A cool e-commers Website!",
+  title: "Quicksell",
+  description: "A cool e-commerce Website!",
 };
 
 export default async function RootLayout({
