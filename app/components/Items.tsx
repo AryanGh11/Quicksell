@@ -4,7 +4,10 @@ import { BsFillPlusCircleFill } from "react-icons/bs";
 import Image from "next/image";
 import { ItemsType } from "@/types/ItemsType";
 import { useCartStore } from "@/store";
+<<<<<<< HEAD
 import formatPrice from "@/util/formatPrice";
+=======
+>>>>>>> 4039faa7f320834862c0ab2825b94af94d48e5c8
 
 export default function Items({
   id,

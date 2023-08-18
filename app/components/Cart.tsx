@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useCartStore } from "@/store";
+<<<<<<< HEAD
 import { IoIosArrowBack } from "react-icons/io";
 import basket from "@/public/cart.png";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,6 +10,14 @@ import Checkout from "./Checkout";
 import OrderConfirmed from "./OrderConfirmed";
 import formatPrice from "@/util/formatPrice";
 import CartItem from "./CartItem";
+=======
+import { IoMdAdd, IoMdRemove, IoIosArrowBack } from "react-icons/io";
+import basket from "@/public/cart.png";
+import { AddCartType } from "@/types/AddCartType";
+import { motion, AnimatePresence } from "framer-motion";
+import Checkout from "./Checkout";
+import OrderConfirmed from "./OrderConfirmed";
+>>>>>>> 4039faa7f320834862c0ab2825b94af94d48e5c8
 
 export default function Cart() {
   const cartStore = useCartStore();
@@ -51,6 +60,7 @@ export default function Cart() {
         {cartStore.onCheckout === "cart" && (
           <>
             {cartStore.cart.map((item) => (
+<<<<<<< HEAD
               <CartItem
                 description={item.description}
                 finalPrice={item.finalPrice}
@@ -59,13 +69,72 @@ export default function Cart() {
                 image={item.image}
                 quantity={item.quantity}
               />
+=======
+              <motion.div
+                layout
+                key={item.id}
+                className="flex items-center justify-between p-4 bg-secondary my-4 rounded-lg pr-8"
+              >
+                <div className="flex gap-4 items-center">
+                  <Image
+                    className="rounded-md h-24 w-24 object-cover"
+                    src={item.image!}
+                    alt={item.name}
+                    width={500}
+                    height={500}
+                  />
+                  <div className="flex flex-col gap-4">
+                    <h2>{item.name}</h2>
+                    {/* update quantity of a product */}
+                    <div className="flex gap-4 items-center justify-start">
+                      <h2>Quantity: {item.quantity}</h2>
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() =>
+                            cartStore.removedProduct({
+                              id: item.id,
+                              image: item.image,
+                              name: item.name,
+                              finalPrice: item.finalPrice,
+                              quantity: item.quantity,
+                            } as AddCartType)
+                          }
+                        >
+                          <IoMdRemove />
+                        </button>
+                        <button
+                          onClick={() =>
+                            cartStore.removedProduct({
+                              id: item.id,
+                              image: item.image,
+                              name: item.name,
+                              finalPrice: item.finalPrice,
+                              quantity: item.quantity,
+                            } as AddCartType)
+                          }
+                        >
+                          <IoMdAdd />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-lg font-bold text-primary">
+                  {item.finalPrice && item.finalPrice}
+                </p>
+              </motion.div>
+>>>>>>> 4039faa7f320834862c0ab2825b94af94d48e5c8
             ))}
           </>
         )}
         {/* Checkout and total */}
         {cartStore.cart.length > 0 && cartStore.onCheckout === "cart" ? (
           <motion.div layout>
+<<<<<<< HEAD
             <p>Total: {formatPrice(totalPrice)}</p>
+=======
+            <p>Total: {totalPrice}</p>
+>>>>>>> 4039faa7f320834862c0ab2825b94af94d48e5c8
             <button
               onClick={() => cartStore.setCheckout("checkout")}
               className="py-2 mt-4 bg-primary w-full rounded-md text-base-100"
