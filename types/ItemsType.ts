@@ -7,4 +7,5 @@ export type ItemsType = {
   image: string | null;
   tag: string | null;
   category: string;
+  quantity?: number | 1;
 };
