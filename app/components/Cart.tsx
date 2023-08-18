@@ -9,6 +9,7 @@ import Checkout from "./Checkout";
 import OrderConfirmed from "./OrderConfirmed";
 import formatPrice from "@/util/formatPrice";
 import CartItem from "./CartItem";
+import PrimaryButton from "./PrimaryButton";
 
 export default function Cart() {
   const cartStore = useCartStore();
@@ -64,14 +65,9 @@ export default function Cart() {
         )}
         {/* Checkout and total */}
         {cartStore.cart.length > 0 && cartStore.onCheckout === "cart" ? (
-          <motion.div layout>
-            <p>Total: {formatPrice(totalPrice)}</p>
-            <button
-              onClick={() => cartStore.setCheckout("checkout")}
-              className="py-2 mt-4 bg-primary w-full rounded-md text-base-100"
-            >
-              Checkout
-            </button>
+          <motion.div layout className="flex flex-col gap-6 pt-12">
+            <p className="font-bold"><span className="opacity-60 font-normal">Total: </span>{formatPrice(totalPrice)}</p>
+            <PrimaryButton text="Checkout" disable={false} />
           </motion.div>
         ) : null}
         {/* Checkout form */}
