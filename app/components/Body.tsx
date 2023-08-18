@@ -5,6 +5,7 @@ import Posts from "./Posts";
 import FAGs from "./FAQs";
 import Link from "next/link";
 import PrimaryButton from "./PrimaryButton";
+import Banners from "./Banners";
 
 export default async function Body() {
   const trendingItems = await prisma.product.findMany({ take: 5 });
@@ -15,21 +16,12 @@ export default async function Body() {
       {/* Banners */}
       <div className="grid grid-rows-1 grid-flow-col overflow-x-scroll overflow-y-hidden no-scrollbar aspect-video md:mx-20 md:w-[calc(100vw-10rem) md:gap-10 md:aspect-auto">
         {banners.map((banner) => (
-          <div className="justify-center items-start max-h-[600px] flex-col md:w-[calc(100vw-10rem)] w-screen bg-blue-400">
-            <Image
-              src={banner.image}
-              alt={banner.title}
-              width={720}
-              height={720}
-              className="w-full object-cover h-full"
-            />
-            <div className="-mt-24 ml-8 z-10 w-fit">
-              <h1 className="text-4xl text-neutral font-bold bg-secondary w-fit">
-                {banner.title}
-              </h1>
-              <h1 className="text-neutral">{banner.description}</h1>
-            </div>
-          </div>
+          <Banners
+            title={banner.title}
+            image={banner.image}
+            description={banner.description!}
+            key={banner.id}
+          />
         ))}
       </div>
       <div className="flex flex-col gap-2 text-center px-6">
