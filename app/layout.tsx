@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Zilla_Slab } from "next/font/google";
+import { Inter } from "next/font/google";
 import Hydrate from "./components/Hydrate";
 import Nav from "./components/Nav";
 import Alert from "./components/Alert";
@@ -8,10 +8,10 @@ import Footer from "./components/Footer";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
-const zillaSlab = Zilla_Slab({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-zillaSlab",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ export default async function RootLayout({
 }) {
   const session = await getServerSession(authOptions);
   return (
-    <html className={`${zillaSlab.variable}`} lang="en">
+    <html className={`${inter.variable}`} lang="en">
       <Hydrate>
         <Alert />
         <Nav user={session?.user} expires={session?.expires as string} />

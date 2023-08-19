@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        zillaSlab: ["var(--font-zillaSlab)"],
+        inter: ["var(--font-inter)"],
       },
       colors: {
         peanut_butter_crust: "#C9A489",

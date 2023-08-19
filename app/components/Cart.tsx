@@ -66,7 +66,10 @@ export default function Cart() {
         {/* Checkout and total */}
         {cartStore.cart.length > 0 && cartStore.onCheckout === "cart" ? (
           <motion.div layout className="flex flex-col gap-6 pt-12">
-            <p className="font-bold"><span className="opacity-60 font-normal">Total: </span>{formatPrice(totalPrice)}</p>
+            <p className="font-bold">
+              <span className="opacity-60 font-normal">Total: </span>
+              {formatPrice(totalPrice)}
+            </p>
             <PrimaryButton text="Checkout" disable={false} />
           </motion.div>
         ) : null}

@@ -13,11 +13,11 @@ export default function Hydrate({ children }: { children: ReactNode }) {
   return (
     <>
       {isHydreated ? (
-        <body className="font-zillaSlab" data-theme={themeStore.mode}>
+        <body className="font-inter" data-theme={themeStore.mode}>
           {children}
         </body>
       ) : (
-        <body className="flex-col font-zillaSlab justify-center items-center w-full h-screen">
+        <body className="flex-col font-inter justify-center items-center w-full h-screen">
           <p>Loading... ✌️</p>
         </body>
       )}
