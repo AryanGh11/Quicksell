@@ -1,4 +1,5 @@
 import AlreadyExisting from "@/app/components/AlreadyExisting";
+import DatabaseConfirmed from "@/app/components/DatabaseConfirmed";
 import PrimaryButton from "@/app/components/PrimaryButton";
 import SecondaryButton from "@/app/components/SecondaryButton";
 import { SearchParamTypes } from "@/types/SearchParamsType";
@@ -11,7 +12,11 @@ export default async function Login({ searchParams }: SearchParamTypes) {
   });
   return (
     <div>
-      {userStatus && <h1>Welcome!!</h1>}
+      {userStatus && (
+          <h1 className="w-full h-full flex justify-center items-center font-bold text-xl">
+            Welcome!
+          </h1>
+        ) && <DatabaseConfirmed isLogin="true" link="/admin" timer={true} />}
       {!userStatus && (
         <div className="flex flex-col px-6 gap-12 py-24">
           <AlreadyExisting text="Admin not found or email/password is wrong! 😓" />

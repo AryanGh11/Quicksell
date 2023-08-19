@@ -39,7 +39,7 @@ export default function SignupForm({
     },
   ];
   return (
-    <div className="flex flex-col w-full gap-6">
+    <div className="flex flex-col w-full gap-4">
       {data.map((val: InputType) => (
         <Input
           value={val.value}

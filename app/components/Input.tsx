@@ -7,7 +7,7 @@ export default function Input({ value, setValue, id, label, type }: InputType) {
         {label}
       </label>
       <input
-        className="border-solid border-[1px] border-opacity-40 border-based_color_peanut_butter_crust p-2 rounded-lg w-full bg-transparent selection:bg-secondary selection:text-neutral"
+        className="border-solid text-sm border-[1px] border-opacity-40 focus:border-[2px] focus:border-secondary border-based_color_peanut_butter_crust p-2 rounded-lg w-full bg-transparent selection:bg-secondary selection:text-neutral"
         type={type}
         id={id}
         placeholder="Type here..."

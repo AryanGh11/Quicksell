@@ -36,7 +36,7 @@ export default function Footer() {
       <div className="w-full h-[.5px] bg-neutral opacity-40"></div>
       {/* Copyright */}
       <div className="flex flex-col gap-4 text-sm font-normal opacity-70">
-        <h1>2023 Arex. All right reserved.</h1>
+        <h1>2023 Quicksell. All right reserved.</h1>
         <h1>Design Made By TeamUp Agency.</h1>
         <h1>Developed by AryanGh.</h1>
       </div>

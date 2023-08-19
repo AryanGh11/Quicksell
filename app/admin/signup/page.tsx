@@ -10,7 +10,9 @@ export default async function Signup({ searchParams }: SearchParamTypes) {
   return (
     <div>
       {userStatus && <AlreadyExisting text="Admin already existing!" />}
-      {!userStatus && <DatabaseConfirmed />}
+      {!userStatus && (
+        <DatabaseConfirmed isLogin="true" link="/admin" timer={true} />
+      )}
     </div>
   );
 }

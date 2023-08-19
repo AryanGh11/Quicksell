@@ -22,7 +22,8 @@ type SearchParams = {
   //signup and login
   email: string;
   password: string;
-  username: string
+  username: string;
+  isLogin: string;
 };
 
 export type SearchParamTypes = {
