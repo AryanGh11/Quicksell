@@ -1,9 +1,22 @@
 "use client";
 
+import Input from "@/app/components/Input";
+import PrimaryButton from "@/app/components/PrimaryButton";
+import { InputType } from "@/types/InputType";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useAdminSession } from "@/store";
 
-export default function UploadImage() {
+export default function UploadCategories() {
+  useEffect(() => {
+    !adminSession.isLogin &&
+      setTimeout(() => {
+        router.push("/");
+      }, 1500);
+  }, []);
+  const adminSession = useAdminSession();
+  const router = useRouter();
   const [category, setCategory] = useState("");
   const isDisable = () => {
     if (category === "") {
@@ -12,38 +25,54 @@ export default function UploadImage() {
       return false;
     }
   };
+  const data = [
+    {
+      value: category,
+      setValue: setCategory,
+      id: "category",
+      type: "text",
+      label: "Category",
+    },
+  ];
   return (
-    <div className="p-6 flex flex-col h-screen justify-between pb-32">
-      <div className="flex flex-col w-full gap-6">
-        <div className="flex flex-col w-full gap-1">
-          <label htmlFor="name" className="font-bold pl-2">
-            Alert text
-          </label>
-          <input
-            className="border-solid border-2 border-secondary p-2 rounded-lg w-full selection:bg-secondary selection:text-neutral"
-            type="text"
-            id="name"
-            placeholder="Type here..."
-            onChange={(e) => setCategory(e.target.value)}
-            value={category}
-          />
-        </div>
-        <Link
-          href={{
-            pathname: "/admin/upload-categories/add-to-database",
-            query: {
-              category,
-            },
-          }}
-        >
-          <button
-            disabled={isDisable()}
-            className="btn bg-secondary text-neutral w-full"
-          >
-            Add category to Database
-          </button>
-        </Link>
-      </div>
-    </div>
+    <form
+      action={"submit"}
+      className="p-6 flex flex-col justify-between pb-24 gap-12"
+    >
+      {adminSession.isLogin && (
+        <>
+          <div className="flex flex-col w-full gap-4">
+            {data.map((val: InputType) => (
+              <Input
+                value={val.value}
+                id={val.id}
+                label={val.label}
+                setValue={val.setValue}
+                type={val.type}
+                key={val.id}
+              />
+            ))}
+          </div>
+          {isDisable && (
+            <PrimaryButton text="Add category" disable={isDisable()} />
+          )}
+          {!isDisable && (
+            <Link
+              href={{
+                pathname: "/admin/upload-categories/add-to-database",
+                query: {
+                  category,
+                },
+              }}
+            >
+              <PrimaryButton text="Add category" disable={isDisable} />
+            </Link>
+          )}
+        </>
+      )}
+      {!adminSession.isLogin && (
+        <h1 className="text-center text-lg font-bold">Login first...</h1>
+      )}
+    </form>
   );
 }

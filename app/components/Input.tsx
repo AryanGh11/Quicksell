@@ -20,3 +20,39 @@ export default function Input({ value, setValue, id, label, type }: InputType) {
     </div>
   );
 }
+
+//Copy code below:
+
+// const data = [
+//   {
+//     value: title,
+//     setValue: setTitle,
+//     id: "title",
+//     type: "text",
+//     label: "Title",
+//   },
+//   {
+//     value: description,
+//     setValue: setShortDes,
+//     id: "description",
+//     type: "text",
+//     label: "Description",
+//   },
+//   {
+//     value: image,
+//     setValue: setImage,
+//     id: "image",
+//     type: "text",
+//     label: "Image",
+//   },
+// ];
+// {data.map((val: InputType) => (
+//   <Input
+//     value={val.value}
+//     id={val.id}
+//     label={val.label}
+//     setValue={val.setValue}
+//     type={val.type}
+//     key={val.id}
+//   />
+// ))}

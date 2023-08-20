@@ -1,9 +1,22 @@
 "use client";
 
+import Input from "@/app/components/Input";
+import PrimaryButton from "@/app/components/PrimaryButton";
+import { useAdminSession } from "@/store";
+import { InputType } from "@/types/InputType";
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
-export default function UploadImage() {
+export default function UploadBanners() {
+  useEffect(() => {
+    !adminSession.isLogin &&
+      setTimeout(() => {
+        router.push("/");
+      }, 1500);
+  }, []);
+  const adminSession = useAdminSession();
+  const router = useRouter();
   const [title, setTitle] = useState("");
   const [description, setShortDes] = useState("");
   const [image, setImage] = useState("");
@@ -14,62 +27,66 @@ export default function UploadImage() {
       return false;
     }
   };
+  const data = [
+    {
+      value: title,
+      setValue: setTitle,
+      id: "title",
+      type: "text",
+      label: "Title",
+    },
+    {
+      value: description,
+      setValue: setShortDes,
+      id: "description",
+      type: "text",
+      label: "Description",
+    },
+    {
+      value: image,
+      setValue: setImage,
+      id: "image",
+      type: "text",
+      label: "Image",
+    },
+  ];
   return (
-    <div className="p-6 flex flex-col h-screen justify-between pb-32">
-      <div className="flex flex-col w-full gap-6">
-        <div className="flex flex-col w-full gap-1">
-          <label htmlFor="title" className="font-bold pl-2">
-            Title
-          </label>
-          <input
-            className="border-solid border-2 border-secondary p-2 rounded-lg w-full selection:bg-secondary selection:text-neutral"
-            type="text"
-            id="title"
-            placeholder="Type here..."
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
-          />
-        </div>
-        <div className="flex flex-col w-full gap-1">
-          <label htmlFor="description" className="font-bold pl-2">
-            Description
-          </label>
-          <input
-            className="border-solid border-2 border-secondary p-2 rounded-lg w-full selection:bg-secondary selection:text-neutral"
-            type="text"
-            id="description"
-            placeholder="Type here..."
-            onChange={(e) => setShortDes(e.target.value)}
-            value={description}
-          />
-        </div>
-        <div className="flex flex-col w-full gap-1">
-          <label htmlFor="image" className="font-bold pl-2">
-            Image
-          </label>
-          <input
-            className="border-solid border-2 border-secondary p-2 rounded-lg w-full selection:bg-secondary selection:text-neutral"
-            type="text"
-            id="image"
-            placeholder="Type here..."
-            onChange={(e) => setImage(e.target.value)}
-            value={image}
-          />
-        </div>
-        <Link
-          href={{
-            pathname: "/admin/upload-banners/add-to-database",
-            query: { title, description, image },
-          }}
-        >
-          <button
-            disabled={isDisable()}
-            className="btn bg-secondary text-neutral w-full"
-          >
-            Add banner to Database
-          </button>
-        </Link>
-      </div>
-    </div>
+    <form
+      action={"submit"}
+      className="p-6 flex flex-col justify-between pb-24 gap-12"
+    >
+      {adminSession.isLogin && (
+        <>
+          <div className="flex flex-col w-full gap-4">
+            {data.map((val: InputType) => (
+              <Input
+                value={val.value}
+                id={val.id}
+                label={val.label}
+                setValue={val.setValue}
+                type={val.type}
+                key={val.id}
+              />
+            ))}
+          </div>
+          {isDisable && (
+            <PrimaryButton text="Add banner" disable={isDisable()} />
+          )}
+          {!isDisable && (
+            <Link
+              href={{
+                pathname: "/admin/upload-banners/add-to-database",
+                query: { title, description, image },
+              }}
+            >
+              <PrimaryButton disable={isDisable} text="Add banner" />
+            </Link>
+          )}
+        </>
+      )}
+      {!adminSession.isLogin && (
+        <h1 className="text-center text-lg font-bold">Login first...</h1>
+      )}
+    </form>
   );
 }

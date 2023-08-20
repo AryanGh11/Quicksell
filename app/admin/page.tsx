@@ -111,7 +111,6 @@ export default function Admin({ searchParams }: SearchParamTypes) {
               {isDisable && (
                 <PrimaryButton text="Sign up" disable={isDisable} />
               )}
-              <h1>{searchParams.isLogin}</h1>
               {!isDisable && (
                 <Link
                   href={{
