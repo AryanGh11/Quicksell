@@ -1,6 +1,9 @@
 import { InputType } from "@/types/InputType";
 
 export default function Input({ value, setValue, id, label, type }: InputType) {
+  const handleValue = (e: any) => {
+    setValue!(e.target.value.toLowerCase());
+  };
   return (
     <div className="flex flex-col w-full gap-1">
       <label htmlFor={id} className="font-bold pl-2">
@@ -11,7 +14,7 @@ export default function Input({ value, setValue, id, label, type }: InputType) {
         type={type}
         id={id}
         placeholder="Type here..."
-        onChange={(e) => setValue!(e.target.value)}
+        onChange={handleValue}
         value={value}
       />
     </div>

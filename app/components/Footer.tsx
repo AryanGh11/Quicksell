@@ -15,20 +15,26 @@ export default function Footer() {
       {/* Links */}
       <div className="flex w-full justify-between items-center">
         <ul className="flex flex-col gap-6 tracking-wide font-normal">
-          <li>Products</li>
-          <li>About</li>
-          <li>Contact us</li>
+          <Link href={"/products"}>
+            <li className="hover:text-primary">Products</li>
+          </Link>
+          <Link href={"/"}>
+            <li className="hover:text-primary">About</li>
+          </Link>
+          <Link href={"/"}>
+            <li className="hover:text-primary">Contact us</li>
+          </Link>
         </ul>
         {/* Social media */}
         <div className="flex flex-col gap-6">
           <Link href={"https://instagram.com/aryan.gholamii"}>
-            <AiOutlineInstagram className="w-6 h-6" />
+            <AiOutlineInstagram className="w-6 h-6 hover:text-primary" />
           </Link>
           <Link href={"https://github.com/AryanGh11"}>
-            <AiOutlineGithub className="w-6 h-6" />
+            <AiOutlineGithub className="w-6 h-6 hover:text-primary" />
           </Link>
           <Link href={"https://wa.me/+989030360886"}>
-            <AiOutlineWhatsApp className="w-6 h-6" />
+            <AiOutlineWhatsApp className="w-6 h-6 hover:text-primary" />
           </Link>
         </div>
       </div>

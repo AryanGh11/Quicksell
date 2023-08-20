@@ -9,6 +9,7 @@ import { PiWarningCircleBold } from "react-icons/pi";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAdminSession } from "@/store";
 import { SearchParamTypes } from "@/types/SearchParamsType";
+import admins from "@/util/Admins.json";
 
 export default function Admin({ searchParams }: SearchParamTypes) {
   const [section, setSection] = useState("login");
@@ -34,8 +35,9 @@ export default function Admin({ searchParams }: SearchParamTypes) {
       }
     }
     if (
-      email === "mahdi.gholami875@gmail.com" ||
-      email === "mahdi.gholami875@gmail.com"
+      email.includes(admins.aryan.email) ||
+      email.includes(admins.hanane.email) ||
+      password != ""
     ) {
       setIsDisable(false);
     } else {
@@ -71,27 +73,16 @@ export default function Admin({ searchParams }: SearchParamTypes) {
             />
           </div>
           {section === "login" && (
-            <>
+            <form
+              className="w-full flex flex-col items-center gap-10"
+              action="submit"
+            >
               <LoginForm
                 email={email}
                 setEmail={setEmail}
                 password={password}
                 setPassword={setPassword}
               />
-              {/* Warn text here */}
-              <AnimatePresence>
-                {warnText && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="text-base-100 text-sm bg-red-400 px-4 py-2 rounded-lg flex items-center gap-1"
-                  >
-                    <PiWarningCircleBold />
-                    <h1>This email is not access to panel</h1>
-                  </motion.div>
-                )}
-              </AnimatePresence>
               {isDisable && (
                 <PrimaryButton text={buttonText} disable={isDisable} />
               )}
@@ -107,7 +98,7 @@ export default function Admin({ searchParams }: SearchParamTypes) {
                   <PrimaryButton text={buttonText} disable={isDisable} />
                 </Link>
               )}
-            </>
+            </form>
           )}
           {section === "signup" && (
             <>
@@ -151,6 +142,20 @@ export default function Admin({ searchParams }: SearchParamTypes) {
                   <PrimaryButton text={buttonText} disable={isDisable} />
                 </Link>
               )}
+              {/* Warn text here */}
+              <AnimatePresence>
+                {warnText && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="text-base-100 text-sm bg-red-400 px-4 py-2 rounded-lg flex items-center gap-1"
+                  >
+                    <PiWarningCircleBold />
+                    <h1>This email is not access to panel</h1>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </>
           )}
         </>
