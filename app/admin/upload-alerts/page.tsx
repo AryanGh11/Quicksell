@@ -1,5 +1,8 @@
 "use client";
 
+import Input from "@/app/components/Input";
+import PrimaryButton from "@/app/components/PrimaryButton";
+import { InputType } from "@/types/InputType";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -12,21 +15,32 @@ export default function UploadImage() {
       return false;
     }
   };
+  const data = [
+    {
+      value: text,
+      setValue: setText,
+      id: "text",
+      type: "text",
+      label: "Alert text",
+    },
+  ];
   return (
-    <div className="p-6 flex flex-col h-screen justify-between pb-32">
+    <form
+      action={"submit"}
+      className="p-6 flex flex-col items-center gap-10 pb-32"
+    >
       <div className="flex flex-col w-full gap-6">
-        <div className="flex flex-col w-full gap-1">
-          <label htmlFor="name" className="font-bold pl-2">
-            Alert text
-          </label>
-          <input
-            className="border-solid border-2 border-secondary p-2 rounded-lg w-full selection:bg-secondary selection:text-neutral"
-            type="text"
-            id="name"
-            placeholder="Type here..."
-            onChange={(e) => setText(e.target.value)}
-            value={text}
-          />
+        <div className="flex flex-col w-full gap-4">
+          {data.map((val: InputType) => (
+            <Input
+              value={val.value}
+              id={val.id}
+              label={val.label}
+              setValue={val.setValue}
+              type={val.type}
+              key={val.id}
+            />
+          ))}
         </div>
         <Link
           href={{
@@ -36,14 +50,9 @@ export default function UploadImage() {
             },
           }}
         >
-          <button
-            disabled={isDisable()}
-            className="btn bg-secondary text-neutral w-full"
-          >
-            Add alert to Database
-          </button>
+          <PrimaryButton disable={isDisable()} text="Add alert" />
         </Link>
       </div>
-    </div>
+    </form>
   );
 }

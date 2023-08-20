@@ -18,11 +18,9 @@ export default function Admin({ searchParams }: SearchParamTypes) {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [isDisable, setIsDisable] = useState(true);
-  const [buttonText, setButtonText] = useState("Next");
   const [warnText, setWarnText] = useState(false);
   const adminSession = useAdminSession();
   const handleOnClick = () => {
-    setButtonText("Loading...");
     setIsDisable(true);
   };
   useEffect(() => {
@@ -35,8 +33,8 @@ export default function Admin({ searchParams }: SearchParamTypes) {
       }
     }
     if (
-      email.includes(admins.aryan.email) ||
-      email.includes(admins.hanane.email) ||
+      email === (admins.aryan.email) ||
+      email === (admins.hanane.email) ||
       password != ""
     ) {
       setIsDisable(false);
@@ -83,9 +81,7 @@ export default function Admin({ searchParams }: SearchParamTypes) {
                 password={password}
                 setPassword={setPassword}
               />
-              {isDisable && (
-                <PrimaryButton text={buttonText} disable={isDisable} />
-              )}
+              {isDisable && <PrimaryButton text="Login" disable={isDisable} />}
               {!isDisable && (
                 <Link
                   href={{
@@ -95,7 +91,7 @@ export default function Admin({ searchParams }: SearchParamTypes) {
                   onClick={handleOnClick}
                   className="w-full"
                 >
-                  <PrimaryButton text={buttonText} disable={isDisable} />
+                  <PrimaryButton text="Login" disable={isDisable} />
                 </Link>
               )}
             </form>
@@ -112,22 +108,8 @@ export default function Admin({ searchParams }: SearchParamTypes) {
                 username={username}
                 setUsername={setUsername}
               />
-              {/* Warn text here */}
-              <AnimatePresence>
-                {warnText && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="text-base-100 text-sm bg-red-400 px-4 py-2 rounded-lg flex items-center gap-1"
-                  >
-                    <PiWarningCircleBold />
-                    <h1>This email is not access to panel</h1>
-                  </motion.div>
-                )}
-              </AnimatePresence>
               {isDisable && (
-                <PrimaryButton text={buttonText} disable={isDisable} />
+                <PrimaryButton text="Sign up" disable={isDisable} />
               )}
               <h1>{searchParams.isLogin}</h1>
               {!isDisable && (
@@ -139,25 +121,25 @@ export default function Admin({ searchParams }: SearchParamTypes) {
                   onClick={handleOnClick}
                   className="w-full"
                 >
-                  <PrimaryButton text={buttonText} disable={isDisable} />
+                  <PrimaryButton text="Sign up" disable={isDisable} />
                 </Link>
               )}
-              {/* Warn text here */}
-              <AnimatePresence>
-                {warnText && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="text-base-100 text-sm bg-red-400 px-4 py-2 rounded-lg flex items-center gap-1"
-                  >
-                    <PiWarningCircleBold />
-                    <h1>This email is not access to panel</h1>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </>
           )}
+          {/* Warn text here */}
+          <AnimatePresence>
+            {warnText && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute bottom-10 text-base-100 text-sm bg-red-400 px-4 py-2 rounded-lg flex items-center gap-1"
+              >
+                <PiWarningCircleBold />
+                <h1>This email is not access to panel</h1>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </>
       )}
       {/* If admin logged in */}
