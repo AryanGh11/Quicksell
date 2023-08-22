@@ -46,7 +46,7 @@ model Product {
   regularPrice Float?
   finalPrice   Float
   image        String?
-  tag          String?
+  offer        Float?
   category     String
   quantity     Float   @default(0)
   orders       Order[]

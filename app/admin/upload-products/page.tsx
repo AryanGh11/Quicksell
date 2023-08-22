@@ -7,6 +7,7 @@ import { InputType } from "@/types/InputType";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import discountPrice from "@/util/discountPrice";
 
 export default function UploadProducts() {
   useEffect(() => {
@@ -23,13 +24,13 @@ export default function UploadProducts() {
   const [finalPrice, setFinalPrice] = useState("");
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("Home");
-  const [isTag, setIsTag] = useState(false);
+  const [isOffer, setIsOffer] = useState(false);
   const [tag, setTag] = useState("");
-  const handleIsTag = () => {
-    if (!isTag) {
-      setIsTag(true);
+  const handleIsOffer = () => {
+    if (!isOffer) {
+      setIsOffer(true);
     } else {
-      setIsTag(false);
+      setIsOffer(false);
     }
   };
   const isDisable = () => {
@@ -67,13 +68,6 @@ export default function UploadProducts() {
       label: "Regular price",
     },
     {
-      value: finalPrice,
-      setValue: setFinalPrice,
-      id: "final-price",
-      type: "number",
-      label: "Final price",
-    },
-    {
       value: image,
       setValue: setImage,
       id: "image",
@@ -81,6 +75,7 @@ export default function UploadProducts() {
       label: "Image",
     },
   ];
+  const offers = [5, 10, 15, "NEW"];
   return (
     <form
       action="/admin/upload-items/add-to-database"
@@ -121,24 +116,26 @@ export default function UploadProducts() {
               <input
                 className="toggle border-solid border-2 border-secondary p-2 rounded-lg selection:bg-secondary selection:text-neutral"
                 type="checkbox"
-                id="isTag"
+                id="is-offer"
                 placeholder="Type here..."
-                onChange={handleIsTag}
+                onChange={handleIsOffer}
               />
             </div>
-            {isTag && (
+            {isOffer && (
               <select
                 className="w-full border-solid border-2 border-secondary p-2 rounded-lg selection:bg-secondary selection:text-neutral"
                 value={tag}
                 onChange={(e) => setTag(e.target.value)}
               >
-                <option defaultChecked>-5%</option>
-                <option>-10%</option>
-                <option>-15%</option>
-                <option>NEW</option>
-                {}
+                {offers.map((offer) => (
+                  <option>{offer}</option>
+                ))}
               </select>
             )}
+            {/* Final price here */}
+            <h1>
+              Final price: {discountPrice(Number(regularPrice), Number(tag))}
+            </h1>
           </div>
           {isDisable && (
             <PrimaryButton text="Add products" disable={isDisable()} />

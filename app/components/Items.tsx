@@ -5,6 +5,7 @@ import Image from "next/image";
 import { ItemsType } from "@/types/ItemsType";
 import { useCartStore } from "@/store";
 import formatPrice from "@/util/formatPrice";
+import AddToCartButton from "./AddToCartButton";
 
 export default function Items({
   id,
@@ -49,22 +50,14 @@ export default function Items({
           )}
         </div>
       </div>
-      <button
-        onClick={() =>
-          cartStore.addProduct({
-            description,
-            id,
-            image,
-            name,
-            finalPrice,
-            quantity,
-          })
-        }
-        className="btn bg-transparent border-solid border-1 border-based_color_peanut_butter_crust rounded-full text-ellipsis overflow-hidden"
-      >
-        Add to cart
-        <BsFillPlusCircleFill />
-      </button>
+      <AddToCartButton
+        description={description}
+        finalPrice={finalPrice}
+        id={id}
+        image={image}
+        name={name}
+        quantity={quantity}
+      />
     </div>
   );
 }
