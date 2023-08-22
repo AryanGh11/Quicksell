@@ -28,7 +28,7 @@ export default function Filter({ products, categories }: any) {
       <div className="flex flex-col gap-10">
         {filteredItem.map((product: ItemsType) => (
           <Items
-            tag={product.tag}
+            offer={product.offer}
             id={product.id}
             image={product.image}
             name={product.name}

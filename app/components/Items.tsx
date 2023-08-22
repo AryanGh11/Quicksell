@@ -1,6 +1,5 @@
 "use client";
 
-import { BsFillPlusCircleFill } from "react-icons/bs";
 import Image from "next/image";
 import { ItemsType } from "@/types/ItemsType";
 import { useCartStore } from "@/store";
@@ -14,21 +13,16 @@ export default function Items({
   regularPrice,
   description,
   image,
-  tag,
+  offer,
   quantity,
 }: ItemsType) {
-  const cartStore = useCartStore();
   return (
     <div className="w-full flex flex-col gap-6" key={id}>
-      {tag && tag === "NEW" ? (
-        <h1 className="flex justify-center border-solid border-primary border-onepx items-center bg-transparent py-2 px-4 right-10 mt-4 rounded-full text-base-100 absolute text-sm font-normal md:hidden">
-          {tag}
-        </h1>
-      ) : tag !== "" ? (
+      {offer && (
         <h1 className="flex justify-center items-center bg-accent p-1 aspect-square right-10 mt-4 rounded-full text-base-100 absolute text-lg font-normal md:hidden">
-          {tag}
+          {offer}
         </h1>
-      ) : null}
+      )}
       <Image
         src={image!}
         alt={name}
@@ -44,7 +38,7 @@ export default function Items({
           </h1>
         </div>
         <div className="flex gap-1 font-normal">
-          <h1 className="pt-1 text-lg">{formatPrice(finalPrice)}</h1>
+          <h1 className="pt-1 text-lg">{formatPrice(finalPrice!)}</h1>
           {regularPrice && (
             <h1 className="text-sm opacity-70">{"$" + regularPrice}</h1>
           )}
@@ -52,7 +46,7 @@ export default function Items({
       </div>
       <AddToCartButton
         description={description}
-        finalPrice={finalPrice}
+        finalPrice={finalPrice!}
         id={id}
         image={image}
         name={name}

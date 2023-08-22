@@ -15,7 +15,7 @@ export default async function AddProductToDatabase({
         regularPrice: regularPrice,
         finalPrice: finalPrice,
         image: searchParams.image,
-        tag: searchParams.tag,
+        offer: searchParams.offer,
         category: searchParams.category,
       },
     });

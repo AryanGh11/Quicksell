@@ -21,11 +21,11 @@ export default function UploadProducts() {
   const [name, setName] = useState("");
   const [description, setShortDes] = useState("");
   const [regularPrice, setRegularPrice] = useState("");
-  const [finalPrice, setFinalPrice] = useState("");
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("Home");
   const [isOffer, setIsOffer] = useState(false);
-  const [tag, setTag] = useState("");
+  const [offer, setTag] = useState("");
+  const finalPrice = discountPrice(Number(regularPrice), Number(offer));
   const handleIsOffer = () => {
     if (!isOffer) {
       setIsOffer(true);
@@ -37,7 +37,7 @@ export default function UploadProducts() {
     if (
       image === "" ||
       name === "" ||
-      finalPrice === "" ||
+      regularPrice === "" ||
       description === ""
     ) {
       return true;
@@ -75,7 +75,7 @@ export default function UploadProducts() {
       label: "Image",
     },
   ];
-  const offers = [5, 10, 15, "NEW"];
+  const offers = [5, 10, 15];
   return (
     <form
       action="/admin/upload-items/add-to-database"
@@ -111,7 +111,7 @@ export default function UploadProducts() {
             </div>
             <div className="flex flex-col w-full gap-1">
               <label htmlFor="image" className="font-bold pl-2">
-                Is tag?
+                Is offer?
               </label>
               <input
                 className="toggle border-solid border-2 border-secondary p-2 rounded-lg selection:bg-secondary selection:text-neutral"
@@ -123,8 +123,8 @@ export default function UploadProducts() {
             </div>
             {isOffer && (
               <select
-                className="w-full border-solid border-2 border-secondary p-2 rounded-lg selection:bg-secondary selection:text-neutral"
-                value={tag}
+                className="border-solid text-sm border-[1px] border-opacity-40 focus:border-[2px] focus:border-secondary border-based_color_peanut_butter_crust p-2 rounded-lg w-full bg-transparent selection:bg-secondary selection:text-neutral"
+                value={offer}
                 onChange={(e) => setTag(e.target.value)}
               >
                 {offers.map((offer) => (
@@ -133,9 +133,7 @@ export default function UploadProducts() {
               </select>
             )}
             {/* Final price here */}
-            <h1>
-              Final price: {discountPrice(Number(regularPrice), Number(tag))}
-            </h1>
+            <h1>Final price: {finalPrice}</h1>
           </div>
           {isDisable && (
             <PrimaryButton text="Add products" disable={isDisable()} />
@@ -150,7 +148,7 @@ export default function UploadProducts() {
                   regularPrice,
                   finalPrice,
                   image,
-                  tag,
+                  offer,
                   category,
                 },
               }}

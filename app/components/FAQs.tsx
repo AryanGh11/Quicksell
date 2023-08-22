@@ -22,7 +22,10 @@ export default function FAQs() {
             Product & Promos
           </li>
         ) : (
-          <li onClick={() => setListSetter("one")} className="btn rounded-2xl bg-transparent font-semibold border-solid border-onepx border-primary">
+          <li
+            onClick={() => setListSetter("one")}
+            className="btn rounded-2xl bg-transparent font-semibold border-solid border-onepx border-primary"
+          >
             Product & Promos
           </li>
         )}
@@ -31,7 +34,10 @@ export default function FAQs() {
             Delivery
           </li>
         ) : (
-          <li onClick={() => setListSetter("two")} className="btn rounded-2xl bg-transparent font-semibold border-solid border-onepx border-primary">
+          <li
+            onClick={() => setListSetter("two")}
+            className="btn rounded-2xl bg-transparent font-semibold border-solid border-onepx border-primary"
+          >
             Delivery
           </li>
         )}
@@ -40,7 +46,10 @@ export default function FAQs() {
             Refunds
           </li>
         ) : (
-          <li onClick={() => setListSetter("three")} className="btn rounded-2xl bg-transparent font-semibold border-solid border-onepx border-primary">
+          <li
+            onClick={() => setListSetter("three")}
+            className="btn rounded-2xl bg-transparent font-semibold border-solid border-onepx border-primary"
+          >
             Refunds
           </li>
         )}

@@ -78,19 +78,19 @@ export default function Cart() {
         {cartStore.onCheckout === "success" && <OrderConfirmed />}
 
         {/* When cart is empty! */}
-        <AnimatePresence>
-          {!cartStore.cart.length && cartStore.onCheckout === "cart" && (
-            <motion.div
-              initial={{ scale: 0.5, rotateZ: -10, opacity: 0 }}
-              animate={{ scale: 1, rotateZ: 0, opacity: 0.75 }}
-              exit={{ scale: 0.5, rotateZ: -10, opacity: 0 }}
-              className="flex flex-col items-center gap-12 text-lg font-medium pt-36 opacity-75"
-            >
+        {!cartStore.cart.length && cartStore.onCheckout === "cart" && (
+          <motion.div
+            initial={{ scale: 0.5, rotateZ: -10, opacity: 0 }}
+            animate={{ scale: 1, rotateZ: 0, opacity: 0.75 }}
+            exit={{ scale: 0.5, rotateZ: -10, opacity: 0 }}
+            className="flex flex-col items-center gap-12 text-lg font-medium pt-36 opacity-75"
+          >
+            <AnimatePresence>
               <h1>It's empty, please add items from Shop!</h1>
               <Image src={basket} alt="empty cart" width={200} height={200} />
-            </motion.div>
-          )}
-        </AnimatePresence>
+            </AnimatePresence>
+          </motion.div>
+        )}
       </motion.div>
     </motion.div>
   );

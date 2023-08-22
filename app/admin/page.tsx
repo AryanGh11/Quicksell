@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 import LoginForm from "../components/LoginForm";
 import SignupForm from "../components/SignupForm";
 import PrimaryButton from "../components/PrimaryButton";
-import { PiWarningCircleBold } from "react-icons/pi";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAdminSession } from "@/store";
 import { SearchParamTypes } from "@/types/SearchParamsType";
 import admins from "@/util/Admins.json";
+import ErrorMessage from "../components/ErrorMessage";
 
 export default function Admin({ searchParams }: SearchParamTypes) {
   const [section, setSection] = useState("login");
@@ -33,8 +33,8 @@ export default function Admin({ searchParams }: SearchParamTypes) {
       }
     }
     if (
-      email === (admins.aryan.email) ||
-      email === (admins.hanane.email) ||
+      email === admins.aryan.email ||
+      email === admins.hanane.email ||
       password != ""
     ) {
       setIsDisable(false);
@@ -128,15 +128,7 @@ export default function Admin({ searchParams }: SearchParamTypes) {
           {/* Warn text here */}
           <AnimatePresence>
             {warnText && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="absolute bottom-10 text-base-100 text-sm bg-red-400 px-4 py-2 rounded-lg flex items-center gap-1"
-              >
-                <PiWarningCircleBold />
-                <h1>This email is not access to panel</h1>
-              </motion.div>
+              <ErrorMessage text="This email is not access to panel." />
             )}
           </AnimatePresence>
         </>

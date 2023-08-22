@@ -5,7 +5,7 @@ export type ItemsType = {
   regularPrice: number;
   finalPrice?: number;
   image: string | null;
-  tag: string | null;
+  offer?: number | null;
   category: string;
   quantity?: number | 1;
 };

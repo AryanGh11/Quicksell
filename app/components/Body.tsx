@@ -34,12 +34,12 @@ export default async function Body() {
       <div className="flex flex-col px-6 gap-10 md:flex-row md:px-20 md:items-start md:justify-center">
         {trendingItems.map((trending) => (
           <Items
-            tag={trending.tag}
+            offer={trending.offer}
             id={trending.id}
             image={trending.image}
             name={trending.name}
             finalPrice={trending.finalPrice}
-            regularPrice={trending.regularPrice}
+            regularPrice={trending.regularPrice!}
             description={trending.description}
             category={trending.category}
             key={trending.id}

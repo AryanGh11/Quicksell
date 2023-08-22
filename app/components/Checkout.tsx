@@ -19,7 +19,7 @@ export default function Checkout() {
   const [clientSecret, setClientSecret] = useState("");
   const themeStore = useThemeStore();
   const [stripeTheme, setStripeTheme] = useState<
-    "flat" | "stripe" | "night" | "none" | undefined
+    "flat" | "stripe" | "night" | undefined
   >("flat");
   useEffect(() => {
     //Set the theme of stripe
