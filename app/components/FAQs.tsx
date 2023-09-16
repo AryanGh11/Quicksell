@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 export default function FAQs() {
   const [listSetter, setListSetter] = useState("one");
+  getServerSideProps
 
   const [oneLiExpand, setOneLiExpand] = useState(false);
   const [twoLiExpand, setTwoLiExpand] = useState(false);

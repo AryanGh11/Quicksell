@@ -2,7 +2,7 @@ import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { prisma } from "@/util/prisma";
-import { custom } from 'openid-client';
+import { custom } from "openid-client";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as any,
@@ -12,13 +12,13 @@ export const authOptions: NextAuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
-  ],callbacks: {
+  ],
+  callbacks: {
     async session({ session, token, user }) {
       session.user = user;
       return session;
     },
   },
-
 };
 custom.setHttpOptionsDefaults({
   timeout: 0,
