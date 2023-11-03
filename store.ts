@@ -99,3 +99,6 @@ export const useAdminSession = create<AdminSession>()(
     { name: "admin-session" }
   )
 );
+
+
+vless://af032c6f-21e4-4e09-8ef0-a6dc8de0932c@91.107.183.236:29719?security=none&encryption=none&host=www.speedtest.net&headerType=http&type=tcp#Samanta+iran+rightel+%7C-%40Aryan_Gh+user+7
