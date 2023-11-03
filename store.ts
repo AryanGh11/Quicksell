@@ -101,4 +101,4 @@ export const useAdminSession = create<AdminSession>()(
 );
 
 
-vless://af032c6f-21e4-4e09-8ef0-a6dc8de0932c@91.107.183.236:29719?security=none&encryption=none&host=www.speedtest.net&headerType=http&type=tcp#Samanta+iran+rightel+%7C-%40Aryan_Gh+user+7
+// vless://d876c7fa-c755-424c-b338-284c22e77e76@samantaip.ddns.net:42784?type=grpc&serviceName=&security=reality&fp=chrome&pbk=QfS8kXsip9SdYnp90o7FUvycc8A00cknTkiLrlHi0lQ&sni=www.speedtest.net&sid=48e8eac0&spx=%2F#samanta%20reality%201%20%7C-%40Aryan_Gh.A%20user8
