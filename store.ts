@@ -101,4 +101,4 @@ export const useAdminSession = create<AdminSession>()(
 );
 
 
-// vless://d876c7fa-c755-424c-b338-284c22e77e76@samantaip.ddns.net:42784?type=grpc&serviceName=&security=reality&fp=chrome&pbk=QfS8kXsip9SdYnp90o7FUvycc8A00cknTkiLrlHi0lQ&sni=www.speedtest.net&sid=48e8eac0&spx=%2F#samanta%20reality%201%20%7C-%40Aryan_Gh.A%20user8
+// vless://eb4cacac-3063-4e88-84ff-9fd3ca0c3a15@samantaip.ddns.net:12735?type=tcp&path=%2F%40filterintl&host=www.discord.com&headerType=http&security=none#%40filterintl%20iran%20Right%201%20l-%40Aryan_Gh%206%D9%85%D8%A7%D9%87%20user8
